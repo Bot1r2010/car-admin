@@ -1,0 +1,137 @@
+@import "./variables";
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: $sidebar-w;
+  flex-shrink: 0;
+  background: $surface;
+  backdrop-filter: $blur;
+  border-right: 1px solid $border;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  margin-bottom: 30px;
+}
+
+.logoMark {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, $accent, $accent-2);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-family: $font-display;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: $font-display;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: $radius-sm;
+  color: $text-muted;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.15s ease;
+
+  &:hover {
+    background: $surface-2;
+    color: $text;
+  }
+}
+
+.navItemActive {
+  background: linear-gradient(135deg, $accent-dim, transparent);
+  color: $accent-2;
+  border: 1px solid $border;
+
+  &:hover {
+    color: $accent-2;
+  }
+}
+
+.navIcon {
+  width: 18px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.userBox {
+  border-top: 1px solid $border;
+  padding-top: 14px;
+  margin-top: 10px;
+}
+
+.userName {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.userRole {
+  font-size: 11px;
+  color: $text-muted;
+  margin-bottom: 10px;
+}
+
+.logoutBtn {
+  width: 100%;
+  justify-content: center;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.topbar {
+  height: 66px;
+  border-bottom: 1px solid $border;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  position: sticky;
+  top: 0;
+  background: rgba(10, 14, 26, 0.75);
+  backdrop-filter: $blur;
+  z-index: 5;
+}
+
+.pageTitle {
+  font-size: 18px;
+}
+
+.content {
+  padding: 28px;
+}
