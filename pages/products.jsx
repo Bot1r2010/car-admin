@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import Layout from "../components/Layout";
 import Modal from "../components/Modal";
 import { useAuth } from "../context/AuthContext";
@@ -12,6 +13,7 @@ const EMPTY_FORM = {
   stock: 0,
   image: "",
   categoryId: "",
+  pickupPointId: "",
 };
 
 function formatSum(n) {
@@ -22,6 +24,7 @@ export default function ProductsPage() {
   const { token } = useAuth();
   const [items, setItems] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [pickupPoints, setPickupPoints] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -38,18 +41,25 @@ export default function ProductsPage() {
   async function loadCategories() {
     const res = await api.get("/categories?limit=100", token);
     setCategories(res.items || res);
+    try {
+      const points = await api.get("/pickup-points?limit=100", token);
+      setPickupPoints(points.items || points.data || points || []);
+    } catch {
+      setPickupPoints([]);
+    }
   }
 
   async function load() {
     setLoading(true);
     try {
-      const params = new URLSearchParams({ page, limit: 10 });
+      const params = new URLSearchParams({ page, limit: 20 });
       if (search) params.set("search", search);
       if (categoryId) params.set("categoryId", categoryId);
       if (isActive) params.set("isActive", isActive);
       const res = await api.get(`/products?${params.toString()}`, token);
       setItems(res.items || res);
-      setTotalPages(res.totalPages || 1);
+      const total = res.total ?? res.meta?.total ?? 0;
+      setTotalPages(res.totalPages || res.meta?.totalPages || (total ? Math.ceil(total / 20) : 1));
     } finally {
       setLoading(false);
     }
@@ -65,11 +75,10 @@ export default function ProductsPage() {
   useEffect(() => {
     if (token) load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [token, page]);
+  }, [token, page, search, categoryId, isActive]);
 
   function applyFilters() {
     setPage(1);
-    load();
   }
 
   function openCreate() {
@@ -88,6 +97,7 @@ export default function ProductsPage() {
       stock: p.stock,
       image: p.image || "",
       categoryId: p.category?.id || p.categoryId || "",
+      pickupPointId: p.pickupPoint?.id || p.pickupPointId || "",
     });
     setError("");
     setModalOpen(true);
@@ -101,6 +111,7 @@ export default function ProductsPage() {
       price: Number(form.price),
       stock: Number(form.stock) || 0,
       categoryId: Number(form.categoryId),
+      ...(form.pickupPointId ? { pickupPointId: Number(form.pickupPointId) } : {}),
     };
     try {
       if (editing) {
@@ -180,6 +191,7 @@ export default function ProductsPage() {
                 <th>Категория</th>
                 <th>Цена</th>
                 <th>Остаток</th>
+                <th>Точка выдачи</th>
                 <th>Статус</th>
                 <th></th>
               </tr>
@@ -194,10 +206,11 @@ export default function ProductsPage() {
                       <div className={styles.imgThumb} />
                     )}
                   </td>
-                  <td>{p.name}</td>
+                  <td><Link href={`/products/${p.id}`} className={styles.productLink}>{p.name}</Link></td>
                   <td>{p.category?.name || "—"}</td>
                   <td>{formatSum(p.price)}</td>
                   <td>{p.stock}</td>
+                  <td>{p.pickupPoint?.name || p.pickupPoint?.address || "—"}</td>
                   <td>
                     <span className={`badge ${p.isActive ? "badge-on" : "badge-off"}`}>
                       {p.isActive ? "Активен" : "Скрыт"}
@@ -224,15 +237,12 @@ export default function ProductsPage() {
 
         {totalPages > 1 && (
           <div className={styles.pagination}>
-            <button className="btn btn-sm" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>
-              ← Назад
-            </button>
-            <span>
-              {page} / {totalPages}
-            </span>
-            <button className="btn btn-sm" disabled={page >= totalPages} onClick={() => setPage((p) => p + 1)}>
-              Вперёд →
-            </button>
+            <button className="btn btn-sm" disabled={page <= 1} onClick={() => setPage((p) => p - 1)}>←</button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).slice(Math.max(0, page - 3), Math.min(totalPages, page + 2)).map((n) => (
+              <button key={n} className={`btn btn-sm ${n === page ? "btn-page-active" : ""}`} onClick={() => setPage(n)}>{n}</button>
+            ))}
+            <span className={styles.pageCount}>из {totalPages}</span>
+            <button className="btn btn-sm" disabled={page >= totalPages} onClick={() => setPage((p) => p + 1)}>→</button>
           </div>
         )}
       </div>
@@ -243,6 +253,17 @@ export default function ProductsPage() {
             <div className="field">
               <label>Название</label>
               <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required />
+            </div>
+            <div className="field">
+              <label>Точка выдачи</label>
+              <select value={form.pickupPointId} onChange={(e) => setForm({ ...form, pickupPointId: e.target.value })}>
+                <option value="">Без точки</option>
+                {pickupPoints.map((point) => (
+                  <option key={point.id} value={point.id}>
+                    {point.name || point.address || `Точка #${point.id}`}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="field">
               <label>Категория</label>

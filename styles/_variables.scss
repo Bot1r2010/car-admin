@@ -1,27 +1,29 @@
-// Palette — Virtual Auto Market: digital-glass tema
-$bg: #0a0e1a;
-$surface: rgba(22, 27, 46, 0.72);
-$surface-solid: #161b2e;
-$surface-2: #1e2440;
-$border: #2a3156;
+// Virtual Auto Market — premium automotive theme
+$bg: #08090b;
+$surface: rgba(18, 20, 24, 0.88);
+$surface-solid: #121419;
+$surface-2: #1a1d23;
+$surface-3: #22262e;
+$border: #2d323b;
+$border-soft: rgba(255,255,255,.08);
 
-$text: #eef1fb;
-$text-muted: #838da8;
+$text: #f5f6f7;
+$text-muted: #8d949f;
 
-$accent: #7c5cff; // electro-indigo
-$accent-2: #23d5c4; // digital teal
-$accent-dim: #241b52;
-$danger: #ff5c7a;
-$danger-dim: #401f2c;
-$success: #23d5a0;
-$success-dim: #16332c;
+$accent: #ff6a1a; // warm automotive orange
+$accent-2: #ffb347;
+$accent-dim: rgba(255,106,26,.13);
+$danger: #ff4d5f;
+$danger-dim: rgba(255,77,95,.12);
+$success: #38d996;
+$success-dim: rgba(56,217,150,.12);
 
-$radius: 14px;
-$radius-sm: 8px;
-$shadow: 0 20px 50px rgba(5, 6, 15, 0.5);
-$blur: blur(18px);
+$radius: 16px;
+$radius-sm: 10px;
+$shadow: 0 24px 70px rgba(0,0,0,.45);
+$blur: blur(20px);
 
 $font-display: "Sora", "Segoe UI", sans-serif;
 $font-body: "Inter", "Segoe UI", sans-serif;
 
-$sidebar-w: 250px;
+$sidebar-w: 264px;

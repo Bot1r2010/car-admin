@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { href: "/dashboard", label: "Главная", icon: "◆" },
   { href: "/products", label: "Автомобили", icon: "🚗" },
   { href: "/categories", label: "Категории", icon: "▤" },
+  { href: "/pickup-points", label: "Точки выдачи", icon: "⌖" },
 ];
 
 export default function Layout({ title, children }) {

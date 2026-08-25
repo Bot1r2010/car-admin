@@ -14,16 +14,19 @@ export default function DashboardPage() {
   const [stats, setStats] = useState(null);
   const [categoryStats, setCategoryStats] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [pickupCount, setPickupCount] = useState(null);
 
   useEffect(() => {
     if (!token) return;
     Promise.all([
       api.get("/dashboard/stats", token),
       api.get("/dashboard/category-stats", token),
+      api.get("/pickup-points?limit=100", token).catch(() => null),
     ])
-      .then(([s, c]) => {
+      .then(([s, c, p]) => {
         setStats(s);
         setCategoryStats(c);
+        setPickupCount(p ? (p.items || p.data || p || []).length : null);
       })
       .finally(() => setLoading(false));
   }, [token]);
@@ -53,6 +56,11 @@ export default function DashboardPage() {
               <div className={styles.statSub}>
                 {stats.categories.active} активных · {stats.categories.empty} пустых
               </div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statLabel}>Точки выдачи</div>
+              <div className={styles.statValue}>{pickupCount ?? "—"}</div>
+              <div className={styles.statSub}>управление пунктами выдачи</div>
             </div>
             <div className={styles.statCard}>
               <div className={styles.statLabel}>Общая стоимость</div>

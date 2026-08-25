@@ -1,175 +1,39 @@
 @import "./variables";
-
-.toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.filters {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  flex: 1;
-
-  input,
-  select {
-    background: $surface;
-    border: 1px solid $border;
-    border-radius: $radius-sm;
-    padding: 9px 12px;
-    color: $text;
-    font-size: 13px;
-
-    &:focus {
-      outline: none;
-      border-color: $accent;
-    }
-  }
-}
-
-.card {
-  background: $surface;
-  backdrop-filter: $blur;
-  border: 1px solid $border;
-  border-radius: $radius;
-  overflow: hidden;
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-
-  th,
-  td {
-    text-align: left;
-    padding: 13px 16px;
-    font-size: 13.5px;
-    border-bottom: 1px solid $border;
-    white-space: nowrap;
-  }
-
-  th {
-    color: $text-muted;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    background: $surface-2;
-  }
-
-  tr:last-child td {
-    border-bottom: none;
-  }
-
-  tr:hover td {
-    background: rgba(255, 255, 255, 0.02);
-  }
-}
-
-.rowActions {
-  display: flex;
-  gap: 8px;
-}
-
-.emptyState {
-  padding: 46px 20px;
-  text-align: center;
-  color: $text-muted;
-  font-size: 14px;
-}
-
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 16px;
-  font-size: 13px;
-  color: $text-muted;
-}
-
-.statsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.statCard {
-  background: $surface;
-  backdrop-filter: $blur;
-  border: 1px solid $border;
-  border-radius: $radius;
-  padding: 18px 20px;
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, $accent, $accent-2);
-  }
-}
-
-.statLabel {
-  font-size: 12.5px;
-  color: $text-muted;
-  margin-bottom: 8px;
-}
-
-.statValue {
-  font-family: $font-display;
-  font-size: 26px;
-  font-weight: 600;
-}
-
-.statSub {
-  font-size: 12px;
-  color: $text-muted;
-  margin-top: 6px;
-}
-
-.sectionsRow {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 20px;
-
-  @media (max-width: 980px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.sectionCard {
-  background: $surface;
-  backdrop-filter: $blur;
-  border: 1px solid $border;
-  border-radius: $radius;
-  padding: 20px;
-}
-
-.sectionTitle {
-  font-size: 15px;
-  margin-bottom: 14px;
-}
-
-.imgThumb {
-  width: 44px;
-  height: 32px;
-  border-radius: 6px;
-  object-fit: cover;
-  background: $surface-2;
-}
-
-.loading {
-  padding: 60px;
-  text-align: center;
-  color: $text-muted;
-}
+.toolbar { display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:20px; flex-wrap:wrap; }
+.filters { display:flex; gap:10px; flex-wrap:wrap; flex:1; input,select { background:#0d0f12; border:1px solid $border; border-radius:$radius-sm; padding:10px 12px; color:$text; font-size:13px; min-height:40px; &:focus { outline:none; border-color:$accent; box-shadow:0 0 0 3px rgba(255,106,26,.07); } } }
+.card,.sectionCard,.statCard { background:linear-gradient(145deg, rgba(22,24,29,.94), rgba(14,16,19,.94)); border:1px solid $border-soft; box-shadow:0 18px 45px rgba(0,0,0,.2); }
+.card { border-radius:$radius; overflow:hidden; }
+.table { width:100%; border-collapse:collapse; th,td { text-align:left; padding:14px 16px; font-size:13.5px; border-bottom:1px solid rgba(255,255,255,.055); white-space:nowrap; } th { color:$text-muted; font-weight:700; text-transform:uppercase; font-size:10px; letter-spacing:.09em; background:rgba(255,255,255,.025); } tr:last-child td { border-bottom:none; } tbody tr { transition:.15s ease; } tbody tr:hover td { background:rgba(255,106,26,.035); } }
+.rowActions { display:flex; gap:8px; }
+.emptyState { padding:55px 20px; text-align:center; color:$text-muted; font-size:14px; }
+.pagination { display:flex; align-items:center; justify-content:center; gap:8px; padding:17px; font-size:13px; color:$text-muted; border-top:1px solid rgba(255,255,255,.05); }
+.statsGrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:24px; }
+.statCard { border-radius:$radius; padding:19px 20px; position:relative; overflow:hidden; }
+.statCard::before { content:""; position:absolute; top:0; left:0; width:70px; height:3px; background:$accent; box-shadow:0 0 18px rgba(255,106,26,.5); }
+.statLabel { font-size:12px; color:$text-muted; margin-bottom:8px; text-transform:uppercase; letter-spacing:.06em; }
+.statValue { font-family:$font-display; font-size:28px; font-weight:700; }
+.statSub { font-size:12px; color:$text-muted; margin-top:6px; }
+.sectionsRow { display:grid; grid-template-columns:1.3fr 1fr; gap:20px; @media(max-width:980px){grid-template-columns:1fr;} }
+.sectionCard { border-radius:$radius; padding:20px; }
+.sectionTitle { font-size:15px; margin-bottom:14px; }
+.imgThumb { width:46px; height:34px; border-radius:7px; object-fit:cover; background:$surface-2; border:1px solid $border-soft; }
+.loading { padding:60px; text-align:center; color:$text-muted; }
+.productLink { color:$text; font-weight:700; &:hover { color:$accent-2; } }
+.btn-page-active { background:$accent; border-color:$accent; color:#fff; box-shadow:0 5px 18px rgba(255,106,26,.2); }
+.pageCount,.pageHint { color:$text-muted; font-size:12px; }
+.pageHint { margin-top:6px; font-size:13px; }
+.errorPanel { padding:14px 16px; margin-bottom:16px; border:1px solid rgba(255,77,95,.35); background:$danger-dim; color:#ffd7df; border-radius:$radius; }
+.detailToolbar { margin-bottom:18px; }
+.detailGrid { display:grid; grid-template-columns:minmax(280px,.8fr) 1.2fr; gap:18px; }
+.detailImage { min-height:340px; border:1px solid $border-soft; border-radius:$radius; background:$surface; display:grid; place-items:center; overflow:hidden; color:$text-muted; font-size:12px; }
+.detailImage img { width:100%; height:100%; min-height:340px; object-fit:cover; }
+.detailEyebrow { color:$accent; font-size:11px; letter-spacing:.14em; font-weight:800; }
+.detailTitle { font-size:30px; margin:8px 0; }
+.detailPrice { font-size:24px; font-weight:800; margin:12px 0 18px; }
+.detailDescription { color:$text-muted; line-height:1.7; }
+.detailFacts { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:24px; }
+.detailFacts div,.pickupCard { border:1px solid $border-soft; background:rgba(255,255,255,.025); border-radius:$radius-sm; padding:14px; }
+.detailFacts span,.pickupCard span { display:block; color:$text-muted; font-size:12px; margin-bottom:5px; }
+.pickupCard strong { display:block; margin-bottom:10px; }
+.modalActions { display:flex; justify-content:flex-end; gap:10px; }
+@media(max-width:850px){.detailGrid{grid-template-columns:1fr}.detailFacts{grid-template-columns:1fr}.table{display:block;overflow-x:auto}}
