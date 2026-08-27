@@ -1,29 +1,23 @@
-// Virtual Auto Market — premium automotive theme
-$bg: #08090b;
-$surface: rgba(18, 20, 24, 0.88);
-$surface-solid: #121419;
-$surface-2: #1a1d23;
-$surface-3: #22262e;
-$border: #2d323b;
-$border-soft: rgba(255,255,255,.08);
-
-$text: #f5f6f7;
-$text-muted: #8d949f;
-
-$accent: #ff6a1a; // warm automotive orange
-$accent-2: #ffb347;
-$accent-dim: rgba(255,106,26,.13);
-$danger: #ff4d5f;
-$danger-dim: rgba(255,77,95,.12);
-$success: #38d996;
-$success-dim: rgba(56,217,150,.12);
-
-$radius: 16px;
-$radius-sm: 10px;
-$shadow: 0 24px 70px rgba(0,0,0,.45);
-$blur: blur(20px);
-
+$bg: #0a0b0e;
+$surface: rgba(20, 22, 27, .82);
+$surface-solid: #15171c;
+$surface-2: #1b1e24;
+$surface-3: #23272f;
+$border: #30353e;
+$border-soft: rgba(255,255,255,.075);
+$text: #f4f5f7;
+$text-muted: #969da8;
+$accent: #e7a84b;
+$accent-2: #ffd18a;
+$accent-dim: rgba(231,168,75,.12);
+$danger: #ff6675;
+$danger-dim: rgba(255,102,117,.10);
+$success: #43d39c;
+$success-dim: rgba(67,211,156,.10);
+$radius: 18px;
+$radius-sm: 11px;
+$shadow: 0 28px 80px rgba(0,0,0,.38);
+$blur: blur(22px);
 $font-display: "Sora", "Segoe UI", sans-serif;
 $font-body: "Inter", "Segoe UI", sans-serif;
-
-$sidebar-w: 264px;
+$sidebar-w: 272px;

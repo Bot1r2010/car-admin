@@ -34,6 +34,7 @@ export default function Layout({ title, children }) {
               Virtual Auto
               <br />
               Market
+              <span className={styles.logoSub}>ADMIN PANEL</span>
             </div>
           </div>
 
@@ -69,6 +70,7 @@ export default function Layout({ title, children }) {
         <div className={styles.main}>
           <header className={styles.topbar}>
             <h1 className={styles.pageTitle}>{title}</h1>
+            <div className={styles.topbarMeta}><span className={styles.statusDot} /> Система работает</div>
           </header>
           <main className={styles.content}>{children}</main>
         </div>
