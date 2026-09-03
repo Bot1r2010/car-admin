@@ -1,41 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
 @import "./variables";
+*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{padding:0;margin:0;min-height:100%;background:#07090d;color:#eef3fa;font-family:$font-body;-webkit-font-smoothing:antialiased}body{min-height:100vh;background:radial-gradient(850px 500px at 85% -5%,rgba(48,119,255,.09),transparent 62%),radial-gradient(650px 450px at 0% 100%,rgba(25,70,140,.06),transparent 65%),#07090d}h1,h2,h3,h4{font-family:$font-display;margin:0}a{color:inherit;text-decoration:none}button{font-family:$font-body;cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45;transform:none!important}input,select,textarea{font-family:$font-body}::selection{background:rgba(65,133,245,.7);color:#fff}::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:#080b10}::-webkit-scrollbar-thumb{background:#293241;border-radius:999px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;padding:9px 15px;border-radius:10px;border:1px solid #2a3340;background:#10151d;color:#eaf0f8;font-size:13px;font-weight:600;transition:transform .18s,border-color .18s,background .18s,box-shadow .18s}.btn:hover{transform:translateY(-1px);border-color:#3a4657;background:#151c26}.btn:active{transform:translateY(0)}.btn-primary{background:linear-gradient(135deg,#4a8fff,#2869d7);border-color:#4b91ff;color:#fff;box-shadow:0 10px 28px rgba(48,120,245,.2)}.btn-primary:hover{background:linear-gradient(135deg,#5799ff,#3274df);border-color:#65a1ff;color:#fff;box-shadow:0 14px 34px rgba(48,120,245,.27)}.btn-danger{background:transparent;border-color:rgba(255,98,116,.3);color:#ff7180}.btn-danger:hover{background:rgba(255,98,116,.08);border-color:rgba(255,98,116,.55)}.btn-sm{min-height:34px;padding:7px 11px;font-size:12px}.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:700}.badge::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}.badge-on{background:rgba(65,214,157,.1);color:#43d39c}.badge-off{background:rgba(255,102,117,.1);color:#ff6675}.field{display:flex;flex-direction:column;gap:7px;margin-bottom:15px}.field label{font-size:12px;color:#788498;font-weight:600}.field input,.field select,.field textarea{background:#0d1219;border:1px solid #28313e;border-radius:10px;padding:11px 12px;color:#eaf0f8;font-size:14px;transition:.18s}.field input:hover,.field select:hover,.field textarea:hover{border-color:#3a4555}.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#4387ff;box-shadow:0 0 0 3px rgba(67,135,255,.1)}.field textarea{resize:vertical;min-height:88px}.error-text{color:#ff7180;font-size:13px;margin:-6px 0 12px}
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-html, body { padding: 0; margin: 0; min-height: 100%; background: $bg; color: $text; font-family: $font-body; -webkit-font-smoothing: antialiased; }
-body {
-  min-height: 100vh;
-  background:
-    radial-gradient(700px 420px at 5% -5%, rgba(231,168,75,.09), transparent 65%),
-    radial-gradient(600px 420px at 100% 100%, rgba(255,255,255,.035), transparent 65%),
-    linear-gradient(135deg,#090a0d 0%,#0c0e12 52%,#090a0d 100%);
-  background-attachment: fixed;
+.btn-map {
+  border-color: rgba(255, 255, 255, .10);
+  background: rgba(255, 255, 255, .035);
+  color: #e9f1ff;
 }
-h1,h2,h3,h4 { font-family: $font-display; margin: 0; }
-a { color: inherit; text-decoration: none; }
-button { font-family: $font-body; cursor: pointer; }
-button:disabled { cursor: not-allowed; opacity: .45; transform: none !important; }
-input,select,textarea { font-family: $font-body; }
-::selection { background: rgba(231,168,75,.75); color: #17120b; }
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: #0b0d10; }
-::-webkit-scrollbar-thumb { background: #343942; border-radius: 999px; }
-
-.btn {
-  display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:40px;
-  padding:9px 15px; border-radius:$radius-sm; border:1px solid $border;
-  background:rgba(255,255,255,.035); color:$text; font-size:13px; font-weight:600;
-  transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease;
-  &:hover { transform:translateY(-1px); border-color:rgba(231,168,75,.45); background:rgba(255,255,255,.065); }
-  &:active { transform:translateY(0); }
+.btn-map:hover {
+  border-color: rgba(75, 140, 255, .45);
+  background: rgba(75, 140, 255, .10);
+  color: #fff;
 }
-.btn-primary { background:linear-gradient(135deg,#efbd6b,#d89435); border-color:transparent; color:#17120b; box-shadow:0 10px 28px rgba(231,168,75,.16); &:hover { filter:brightness(1.06); color:#17120b; box-shadow:0 14px 34px rgba(231,168,75,.22); } }
-.btn-danger { background:transparent; border-color:rgba(255,102,117,.35); color:$danger; &:hover { background:$danger-dim; border-color:rgba(255,102,117,.55); } }
-.btn-sm { min-height:34px; padding:7px 11px; font-size:12px; }
-.badge { display:inline-flex; align-items:center; gap:6px; padding:5px 9px; border-radius:999px; font-size:11px; font-weight:700; }
-.badge::before { content:""; width:5px; height:5px; border-radius:50%; background:currentColor; box-shadow:0 0 8px currentColor; }
-.badge-on { background:$success-dim; color:$success; }
-.badge-off { background:$danger-dim; color:$danger; }
-.field { display:flex; flex-direction:column; gap:7px; margin-bottom:15px; label { font-size:12px; color:$text-muted; font-weight:600; } input,select,textarea { background:#0e1014; border:1px solid $border; border-radius:$radius-sm; padding:11px 12px; color:$text; font-size:14px; transition:.18s; &:hover { border-color:#444a55; } &:focus { outline:none; border-color:$accent; box-shadow:0 0 0 3px rgba(231,168,75,.08); } } textarea { resize:vertical; min-height:88px; } }
-.error-text { color:$danger; font-size:13px; margin:-6px 0 12px; }
