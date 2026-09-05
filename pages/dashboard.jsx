@@ -15,6 +15,8 @@ export default function DashboardPage() {
   const [categoryStats, setCategoryStats] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pickupCount, setPickupCount] = useState(null);
+  const [ordersCount, setOrdersCount] = useState(null);
+  const [customersCount, setCustomersCount] = useState(null);
 
   useEffect(() => {
     if (!token) return;
@@ -22,11 +24,15 @@ export default function DashboardPage() {
       api.get("/dashboard/stats", token),
       api.get("/dashboard/category-stats", token),
       api.get("/pickup-points?limit=100", token).catch(() => null),
+      api.get("/orders?limit=1", token).catch(() => null),
+      api.get("/users?limit=1", token).catch(() => null),
     ])
-      .then(([s, c, p]) => {
+      .then(([s, c, p, o, u]) => {
         setStats(s);
         setCategoryStats(c);
         setPickupCount(p ? (p.items || p.data || p || []).length : null);
+        setOrdersCount(o ? o.total ?? o.meta?.total ?? (o.items || o.data || []).length : null);
+        setCustomersCount(u ? u.total ?? u.meta?.total ?? (u.items || u.data || []).length : null);
       })
       .finally(() => setLoading(false));
   }, [token]);
@@ -61,6 +67,16 @@ export default function DashboardPage() {
               <div className={styles.statLabel}>Точки выдачи</div>
               <div className={styles.statValue}>{pickupCount ?? "—"}</div>
               <div className={styles.statSub}>управление пунктами выдачи</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statLabel}>Заказы</div>
+              <div className={styles.statValue}>{ordersCount ?? "—"}</div>
+              <div className={styles.statSub}>всего оформлено</div>
+            </div>
+            <div className={styles.statCard}>
+              <div className={styles.statLabel}>Клиенты</div>
+              <div className={styles.statValue}>{customersCount ?? "—"}</div>
+              <div className={styles.statSub}>зарегистрировано</div>
             </div>
             <div className={styles.statCard}>
               <div className={styles.statLabel}>Общая стоимость</div>

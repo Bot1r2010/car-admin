@@ -8,6 +8,11 @@ const NAV_ITEMS = [
   { href: "/dashboard", label: "Главная", icon: "◆" },
   { href: "/products", label: "Автомобили", icon: "🚗" },
   { href: "/categories", label: "Категории", icon: "▤" },
+  { href: "/orders", label: "Заказы", icon: "🧾" },
+  { href: "/customers", label: "Клиенты", icon: "👤" },
+  { href: "/reviews", label: "Отзывы", icon: "★" },
+  { href: "/banners", label: "Баннеры и акции", icon: "◈" },
+  { href: "/notifications", label: "Уведомления", icon: "🔔" },
   { href: "/pickup-points", label: "Точки выдачи", icon: "⌖" },
 ];
 

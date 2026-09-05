@@ -1,12 +1,12 @@
 @import "./variables";
-.page { min-height:100vh; display:grid; place-items:center; padding:24px; position:relative; overflow:hidden; background:#08090b; }
-.glow { position:absolute; width:520px; height:520px; border-radius:50%; filter:blur(120px); opacity:.22; z-index:0; }
+.page { min-height:100vh; display:grid; place-items:center; padding:24px; position:relative; overflow:hidden; background:#070810; }
+.glow { position:absolute; width:520px; height:520px; border-radius:50%; filter:blur(120px); opacity:.24; z-index:0; }
 .glowA { background:$accent; top:-180px; left:-160px; }
-.glowB { background:#ffb347; bottom:-220px; right:-160px; }
-.card { position:relative; z-index:1; width:100%; max-width:410px; background:rgba(16,18,22,.9); backdrop-filter:blur(24px); border:1px solid $border-soft; border-radius:22px; padding:38px 34px; box-shadow:$shadow; }
+.glowB { background:$accent-2; bottom:-220px; right:-160px; }
+.card { position:relative; z-index:1; width:100%; max-width:410px; background:rgba(17,18,30,.9); backdrop-filter:blur(24px); border:1px solid $border-soft; border-radius:22px; padding:38px 34px; box-shadow:$shadow; }
 .card::before { content:""; position:absolute; top:0; left:34px; right:34px; height:2px; background:linear-gradient(90deg,$accent,transparent); }
 .logo { display:flex; align-items:center; gap:11px; margin-bottom:20px; }
-.logoMark { width:44px; height:44px; border-radius:12px; background:linear-gradient(145deg,#ff7a2f,#df3f08); display:grid; place-items:center; color:#fff; font-family:$font-display; font-weight:800; font-size:19px; box-shadow:0 10px 25px rgba(255,106,26,.2); }
+.logoMark { width:44px; height:44px; border-radius:12px; background:linear-gradient(145deg,#8f7dff,#4d3ce0); display:grid; place-items:center; color:#fff; font-family:$font-display; font-weight:800; font-size:19px; box-shadow:0 10px 25px rgba(124,107,255,.25); }
 .brand { font-family:$font-display; font-weight:800; font-size:14px; }
 .title { font-size:24px; margin-bottom:5px; letter-spacing:-.04em; }
 .subtitle { color:$text-muted; font-size:13px; margin-bottom:28px; }
